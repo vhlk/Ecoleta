@@ -8,7 +8,7 @@ class itemsController {
             return {
                 id: item.id,
                 title: item.title,
-                image_url: `http://localhost:4000/uploads/${item.image}`
+                image_url: `http://192.168.0.13:4000/uploads/${item.image}`
             }
         })
         return res.send(serializedItems)

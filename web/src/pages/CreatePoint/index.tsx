@@ -83,7 +83,7 @@ const CreatePoint = () => {
     }
 
     async function handleSubmit(event: FormEvent) {
-        event.preventDefault()
+        event.preventDefault() //impede o form do html de mudar de pagina
 
         let { name, email, whatsapp } = formInput
         let uf = selectedUF
