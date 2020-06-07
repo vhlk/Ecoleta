@@ -17,7 +17,7 @@ class pointsController {
         const trx = await Knex.transaction()
 
         let details = {
-            image: "https://images.unsplash.com/photo-1591167844762-3c3456a61d8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80",
+            image: req.file.filename,
             name,
             email,
             whatsapp,
@@ -32,7 +32,10 @@ class pointsController {
 
         let point_id = insertedId[0]
 
-        const pointItems = items.map((item_id: Number) => {
+        const pointItems = items
+        .split(",")
+        .map((item: string) => Number(item.trim()))
+        .map((item_id: Number) => {
             return {
                 item_id,
                 point_id
@@ -49,20 +52,26 @@ class pointsController {
         })
     }
 
-    async show(req: Request, res: Response){
+    async show(req: Request, res: Response) {
         let id = req.params.id
         const point = await Knex("points").where("id", id).first()
 
-        if (!point) return res.status(400).json({error: "Ponto não encontrado"});
+        if (!point) return res.status(400).json({ error: "Ponto não encontrado" });
 
         let items = await Knex("items").join("points_items", "points_items.item_id", "=", "items.id")
             .where("points_items.point_id", id).select("title")
-        return res.json({point, items})
+
+        let serializedPoint = {
+            ...point,
+            image_url: `http://192.168.0.13:4000/uploads/${point.image}`
+        }
+
+        return res.json({ point: serializedPoint, items })
     }
 
     async index(req: Request, res: Response) {
-        const {city, uf, items} = req.query
-        
+        const { city, uf, items } = req.query
+
         let itens = String(items).split(",").map(item => Number(item.trim()))
 
         let points = await Knex("points").join("points_items", "points_items.point_id", "=", "points.id")
@@ -71,8 +80,14 @@ class pointsController {
             .where("uf", String(uf))
             .distinct()
             .select("points.*")
-        
-        return res.json(points)
+
+        let serializedPoints = points.map(point => {
+            return {
+                ...point, image_url: `http://192.168.0.13:4000/uploads/${point.image}`
+            }
+        })
+
+        return res.json(serializedPoints)
     }
 }
 
