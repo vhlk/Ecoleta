@@ -26,3 +26,9 @@ jspm_packages/
 # Uploads
 server/uploads/*
 !server/uploads/README.md
+!server/uploads/baterias.svg
+!server/uploads/eletronicos.svg
+!server/uploads/lampadas.svg
+!server/uploads/oleo.svg
+!server/uploads/organicos.svg
+!server/uploads/papeis-papelao.svg

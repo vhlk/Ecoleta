@@ -1,7 +1,10 @@
 import axios from "axios"
+import IPAddress from "ipaddress"
+
+let localIPAdress = new IPAddress().address()
 
 const Api = axios.create({
-    baseURL: "http://192.168.0.13:4000"
+    baseURL: `http://${localIPAdress}:4000`
 })
 
 export default Api

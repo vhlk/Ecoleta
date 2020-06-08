@@ -1,7 +1,9 @@
 import { Request, Response, response } from "express"
 import Knex from "../database/connection"
+import IPAdress from "../../../config"
 
 class pointsController {
+
     async create(req: Request, res: Response) {
         const {
             name,
@@ -61,9 +63,12 @@ class pointsController {
         let items = await Knex("items").join("points_items", "points_items.item_id", "=", "items.id")
             .where("points_items.point_id", id).select("title")
 
+    
+        let localIPAdress = new IPAdress().address()
+
         let serializedPoint = {
             ...point,
-            image_url: `http://192.168.0.13:4000/uploads/${point.image}`
+            image_url: `http://${localIPAdress}:4000/uploads/${point.image}`
         }
 
         return res.json({ point: serializedPoint, items })
@@ -81,9 +86,11 @@ class pointsController {
             .distinct()
             .select("points.*")
 
+        let localIPAdress = new IPAdress().address()
+
         let serializedPoints = points.map(point => {
             return {
-                ...point, image_url: `http://192.168.0.13:4000/uploads/${point.image}`
+                ...point, image_url: `http://${localIPAdress}:4000/uploads/${point.image}`
             }
         })
 

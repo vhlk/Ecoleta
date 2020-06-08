@@ -1,0 +1,7 @@
+{
+  "name": "ipaddress",
+  "dependencies": {
+    "expo": "^37.0.3"
+  },
+  "private": true
+}
