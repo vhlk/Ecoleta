@@ -19,3 +19,10 @@ pids
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# Database
+*.sqlite
+
+# Uploads
+server/uploads/*
+!server/uploads/README.md

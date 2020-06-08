@@ -1,0 +1,1 @@
+This directory should be used for uploaded images from the selective collection garbage points.
