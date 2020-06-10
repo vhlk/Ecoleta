@@ -35,11 +35,10 @@ Ecoleta está à procura de um servidor na internet para hospedar, enquanto isso
 1. Caso não possua, instale o <a href="https://nodejs.org/en/">NodeJS</a>.
 2. Abra a pasta do projeto.
 3. Os passos a seguir utilizam o terminal ou afins:
-   1. Entre na pasta na pasta config, verifique seu endereço IP (no Linux pode verificar o inet usando o comando ` ifconfig ` e no Windows pode verificar o endereço ipv4 usando o comando ` ipconfig `) e mude o valor no arquivo ipaddress para o seu endereço IP. A seguir instale as dependências na pasta utilizando o comando ` npm install `.
+   1. Verifique se o servidor está rodando em https://ecoleta1.herokuapp.com/, ele pode ficar inativo após algum tempo sem ser utilizado.
    2. Para rodar o servidor:
-      1. Entre na pasta do servidor e instale as dependências usando ` npm install `.
-      2. Caso seja a primeira vez que roda o servidor, crie a base de dados usando ` npm run knex:migrate ` e crie um alguns itens no banco de dados usando ` npm run knex:seed `.
-      3. Rode o servidor utilizando o comando ` npm run test `
+      1. Estará funcionando o tempo todo.
+      2. Caso, por algum motivo, queira rodar o servidor localmente, dentro da pasta server existe uma explicação de quais procedimentos seguir.
    3. Para rodar a versão web:
       1. Entre na pasta web e instale as dependências usando ` npm install `.
       2. Rode utilizando o comando ` npm start `.
@@ -50,6 +49,7 @@ Ecoleta está à procura de um servidor na internet para hospedar, enquanto isso
       3. Execute utilizando o comando ` npm start `.
       4. Leia o código QR mostrado com o Expo no celular, espere carregar e pronto!
       * **Atenção: Será necessário ativar a localização no celular apenas para que o mapa possa ser mostrado com os pontos de coleta próximos.**
+      * Dica caso o aplicativo dê erro ao se conectar ao celular ou não esteja na mesma rede: Utilize a opção "Tunnel"
 
 
 ## Download

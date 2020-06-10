@@ -1,6 +1,5 @@
 import { Request, Response, response } from "express"
 import Knex from "../database/connection"
-import IPAdress from "../../../config"
 
 class pointsController {
 
@@ -64,11 +63,11 @@ class pointsController {
             .where("points_items.point_id", id).select("title")
 
     
-        let localIPAdress = new IPAdress().address()
+        let address = "https://ecoleta1.herokuapp.com"
 
         let serializedPoint = {
             ...point,
-            image_url: `http://${localIPAdress}:4000/uploads/${point.image}`
+            image_url: `http://${address}:4000/uploads/${point.image}`
         }
 
         return res.json({ point: serializedPoint, items })
@@ -86,11 +85,11 @@ class pointsController {
             .distinct()
             .select("points.*")
 
-        let localIPAdress = new IPAdress().address()
+        let address = "https://ecoleta1.herokuapp.com"
 
         let serializedPoints = points.map(point => {
             return {
-                ...point, image_url: `http://${localIPAdress}:4000/uploads/${point.image}`
+                ...point, image_url: `http://${address}:4000/uploads/${point.image}`
             }
         })
 

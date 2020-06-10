@@ -4,7 +4,7 @@ import MulterConfig from "./config/multer"
 import {celebrate, Joi} from "celebrate"
 
 import PointsController from "./controllers/pointsController"
-import ItemsController from "./controllers/itemsControler"
+import ItemsController from "./controllers/itemsController"
 
 const routes = Express.Router()
 const itemsControler = new ItemsController()

@@ -6,12 +6,12 @@ class itemsController {
 
     async index(req: Request, res: Response) {
         const items = await Knex("items").select("*")
-        let localIPAddress = new IPAdress().address()
+        let address = "https://ecoleta1.herokuapp.com"
         let serializedItems = items.map(item => {
             return {
                 id: item.id,
                 title: item.title,
-                image_url: `http://${localIPAddress}:4000/uploads/${item.image}`
+                image_url: `http://${address}:4000/uploads/${item.image}`
             }
         })
         return res.send(serializedItems)

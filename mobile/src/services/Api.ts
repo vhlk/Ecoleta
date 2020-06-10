@@ -1,10 +1,9 @@
 import axios from "axios"
-import IPAddress from "ipaddress"
 
-let localIPAdress = new IPAddress().address()
+let address = "https://ecoleta1.herokuapp.com"
 
 const Api = axios.create({
-    baseURL: `http://${localIPAdress}:4000`
+    baseURL: address
 })
 
 export default Api

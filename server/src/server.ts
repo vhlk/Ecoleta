@@ -4,6 +4,8 @@ import Path from "path"
 import cors from "cors"
 import {errors} from "celebrate"
 
+const port = process.env.PORT || 4000
+
 const app = Express()
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -20,4 +22,4 @@ app.use("/uploads", Express.static(Path.resolve(__dirname, "..", "uploads")))
 
 app.use(errors())
 
-app.listen(4000)
+app.listen(port)
